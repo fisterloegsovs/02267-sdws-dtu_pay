@@ -1,8 +1,19 @@
 # 02267-SDWS-DTU_Pay
 
-## Assignment
+## Project Context
 
-Can be downloaded [here](https://learn.inside.dtu.dk/d2l/common/viewFile.d2lfile/Database/MjM4NTMwMA/problem_description.pdf?ou=242021).
+This was a collaborative group project developed for course 02267 (Software Development in Large-Scale Distributed Systems) at DTU.
+
+**Team Size:** 5 DTU students
+
+**Development Approach:** Pair programming and mob programming throughout the project
+
+**My Contributions:**
+- Participated in all development sessions through pair/mob programming
+- Authored significant portions of the technical report and architecture documentation
+- Contributed to microservices design, REST API implementation, and system integration
+
+**Note:** This repository is migrated from DTU's private GitLab instance. The original development history with all team member contributions is not publicly accessible due to DTU authentication requirements. This public version serves as a portfolio demonstration of the project.
 
 ## Learning goals
 
