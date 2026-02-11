@@ -4,12 +4,12 @@
 
 This was a collaborative group project developed for course 02267 (Software Development in Large-Scale Distributed Systems) at DTU.
 
-**Team Size:** 5 DTU students
+**Team Size:** 6 DTU students
 
-**Development Approach:** Pair programming and mob programming throughout the project
+**Development Approach:** Pair programming in team of two
 
 **My Contributions:**
-- Participated in all development sessions through pair/mob programming
+- Participated in all development sessions through pair programming
 - Authored significant portions of the technical report and architecture documentation
 - Contributed to microservices design, REST API implementation, and system integration
 
