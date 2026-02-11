@@ -1,0 +1,4 @@
+services:
+  account-manager:
+    image: account-manager
+    build: .

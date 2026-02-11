@@ -1,0 +1,5 @@
+services:
+  dtu-pay:
+    build: .
+    image: dtu-pay
+    container_name: dtu-pay

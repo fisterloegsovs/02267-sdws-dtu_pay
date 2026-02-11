@@ -1,0 +1,4 @@
+services:
+  token-manager:
+    image: token-manager
+    build: .

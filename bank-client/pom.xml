@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
+
+	<!-- Tip to update to the latest releases: Run "mvn versions:use-latest-releases" -->
+
+	<modelVersion>4.0.0</modelVersion>
+	<groupId>dtu</groupId>
+	<artifactId>bank-client</artifactId>
+	<version>1.0.0</version>
+	<name>bank-client</name>
+
+	<properties>
+		<maven.compiler.source>11</maven.compiler.source>
+		<maven.compiler.target>11</maven.compiler.target>
+		<failOnMissingWebXml>false</failOnMissingWebXml>
+		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+	</properties>
+	<build>
+		<plugins>
+			<!-- The Surefire Plugin is needed to run JUnit 5 tests with Maven -->
+			<plugin>
+				<artifactId>maven-surefire-plugin</artifactId>
+				<version>2.22.2</version>
+				<configuration></configuration>
+			</plugin>
+			<plugin>
+				<groupId>com.sun.xml.ws</groupId>
+				<artifactId>jaxws-maven-plugin</artifactId>
+				<version>4.0.0</version>
+				<executions>
+					<execution>
+						<goals>
+							<goal>wsimport</goal>
+						</goals>
+					</execution>
+				</executions>
+				<configuration>
+					<wsdlUrls>
+						<wsdlUrl>http://fm-00.compute.dtu.dk/BankService.wsdl.xml</wsdlUrl>
+					</wsdlUrls>
+					<keep>true</keep>
+					<packageName>dtu.ws.fastmoney</packageName>
+					<sourceDestDir>src/main/java</sourceDestDir>
+				</configuration>
+
+				<!-- if you want to use a specific version of JAX-WS/Jakarta XML Web 
+                                        Services, you can do so like this -->
+			</plugin>
+		</plugins>
+	</build>
+	<dependencies>
+		<dependency>
+			<groupId>com.sun.xml.ws</groupId>
+			<artifactId>jaxws-ri</artifactId>
+			<version>4.0.3</version>
+			<type>pom</type>
+		</dependency>
+
+	</dependencies>
+</project>

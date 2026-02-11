@@ -1,0 +1,279 @@
+{
+  "openapi": "3.0.0",
+  "info": {
+    "title": "DTU-pay",
+    "version": "1.0.0"
+  },
+  "paths": {
+    "http://localhost:8080/customer/register": {
+      "post": {
+        "summary": "Register Customer",
+        "parameters": [],
+        "responses": {
+          "201": {
+            "description": "Register Customer Response",
+            "content": {
+              "application/json": {
+                "example": "95ef64fb-2de7-4775-9e79-8601ac7bed60"
+              }
+            }
+          }
+        },
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "example": {
+                  "cpr": "1234567891",
+                  "firstName": "King",
+                  "lastName": "client",
+                  "account": "137d6455-ef84-4477-b163-1ac59f0855e9",
+                  "address": "456 Secondary Street, Aarhus"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "http://localhost:8080/customer/createTokens": {
+      "post": {
+        "summary": "Create Tokens",
+        "parameters": [],
+        "responses": {
+          "201": {
+            "description": "Create Tokens response",
+            "content": {
+              "application/json": {
+                "example": "Tokens created"
+              }
+            }
+          }
+        },
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "example": {
+                  "customerId": "{{customerID}}",
+                  "amount": 5
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "http://localhost:8080/customer/deregister/{customerId}": {
+      "delete": {
+        "summary": "Deregister Customer",
+        "parameters": [
+          {
+            "name": "customerId",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "204": {
+            "description": "Deregister Customer response",
+            "content": {
+              "application/json": {
+                "example": null
+              }
+            }
+          }
+        }
+      }
+    },
+    "http://localhost:8080/customer/getTokens/{customerID}": {
+      "get": {
+        "summary": "Get Customer Tokens",
+        "parameters": [
+          {
+            "name": "customerID",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Get Customer Tokens response",
+            "content": {
+              "application/json": {
+                "example": [
+                  "01cec005-794a-4ca9-9332-60aeaea96b9e",
+                  "3522b459-c504-4735-a696-594793cf29d0",
+                  "0b03433f-e799-47dd-9b20-fcdcceb8c7d6",
+                  "3da25fa5-eb61-4819-bbd7-d189c5f452c5",
+                  "c1f474f0-95e5-4e26-ae45-7a1e76f32baa"
+                ]
+              }
+            }
+          }
+        }
+      }
+    },
+    "http://localhost:8080/customer/get-transactions/{customerID}": {
+      "get": {
+        "summary": "Get Customer transactions",
+        "parameters": [
+          {
+            "name": "customerID",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Get Customer transactions Response",
+            "content": {
+              "application/json": {
+                "example": [
+                  {
+                    "amount": 100,
+                    "customerId": "95ef64fb-2de7-4775-9e79-8601ac7bed60",
+                    "description": "payment of 100 from cust to merch",
+                    "customerAccount": "137d6455-ef84-4477-b163-1ac59f0855e9",
+                    "transactionId": "c3b4d820-f79a-4b7c-9eba-04f90e7b97d0",
+                    "token": "01cec005-794a-4ca9-9332-60aeaea96b9e",
+                    "status": "success"
+                  }
+                ]
+              }
+            }
+          }
+        }
+      }
+    },
+    "http://localhost:8080/merchant/register": {
+      "post": {
+        "summary": "Register Merchant",
+        "parameters": [],
+        "responses": {
+          "200": {
+            "description": "Register Merchant Response",
+            "content": {
+              "text/plain;charset=UTF-8": {
+                "example": "a78a11b3-7787-44e4-a03e-cd7e81756227"
+              }
+            }
+          }
+        },
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "example": {
+                  "cpr": "123456-7892",
+                  "firstName": "amber",
+                  "lastName": "merchant",
+                  "account": "331bc9ad-5a31-46d0-a511-eaacd2959daa",
+                  "address": "123 Main Street, Copenhagen"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "http://localhost:8080/merchant/deregister/0692277e-4c0a-4c57-a83a-ce8cf886b92d": {
+      "delete": {
+        "summary": "Deregister Merchant",
+        "parameters": [],
+        "responses": {
+          "204": {
+            "description": "Deregister Merchant response",
+            "content": {
+              "application/json": {
+                "example": null
+              }
+            }
+          }
+        }
+      }
+    },
+    "http://localhost:8080/merchant/pay": {
+      "post": {
+        "summary": "Initiate Payment",
+        "parameters": [],
+        "responses": {
+          "200": {
+            "description": "Initiate Payment Response",
+            "content": {
+              "application/json": {
+                "example": {
+                  "message": "Payment succeeded",
+                  "success": true,
+                  "transactionId": "6ed1053c-c037-4797-a7e2-31b65c9fad0f"
+                }
+              }
+            }
+          }
+        },
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "example": {
+                  "token": "{{secToken}}",
+                  "merchantId": "{{merchantID}}",
+                  "amount": 100.0,
+                  "description": "payment of 100 from cust to merch"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "http://localhost:8080/merchant/get-transactions/{merchantID}": {
+      "get": {
+        "summary": "Get Merchant transactions",
+        "parameters": [
+          {
+            "name": "merchantID",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Get Merchant transactions response",
+            "content": {
+              "application/json": {
+                "example": [
+                  {
+                    "amount": 100,
+                    "merchantAccount": "331bc9ad-5a31-46d0-a511-eaacd2959daa",
+                    "merchantId": "a78a11b3-7787-44e4-a03e-cd7e81756227",
+                    "description": "payment of 100 from cust to merch",
+                    "transactionId": "c3b4d820-f79a-4b7c-9eba-04f90e7b97d0",
+                    "token": "01cec005-794a-4ca9-9332-60aeaea96b9e",
+                    "status": "success"
+                  }
+                ]
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}

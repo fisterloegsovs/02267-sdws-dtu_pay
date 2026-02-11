@@ -1,0 +1,38 @@
+services:
+  rabbitmq:
+    image: rabbitmq:management
+    container_name: rabbitmq
+    ports:
+      - "5672:5672"
+      - "15672:15672"
+  dtu-pay:
+    image: dtu-pay
+    container_name: dtu-pay
+    depends_on:
+      - rabbitmq
+    ports:
+     - "8080:8080"
+  account-manager:
+    image: account-manager
+    container_name: account-manager
+    depends_on:
+      - rabbitmq
+    restart: unless-stopped
+  payment-service:
+      image: payment-service
+      container_name: payment-service
+      depends_on:
+        - rabbitmq
+      restart: unless-stopped
+  token-manager:
+    image: token-manager
+    container_name: token-manager
+    depends_on:
+      - rabbitmq
+    restart: unless-stopped
+  report-service:
+      image: report-service
+      container_name: report-service
+      depends_on:
+        - rabbitmq
+      restart: unless-stopped

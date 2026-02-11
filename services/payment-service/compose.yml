@@ -1,0 +1,4 @@
+services:
+  payment-service:
+    image: payment-service
+    build: .
